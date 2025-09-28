@@ -95,7 +95,7 @@
 
       <!-- Menú móvil desplegable -->
       <div 
-        class="md:hidden absolute top-full left-0 w-full backdrop-blur-xl bg-white/90 border-b border-white/20 shadow-xl transition-all duration-500 ease-out"
+        class="md:hidden absolute top-full left-0 w-full backdrop-blur-xl bg-white border-b border-white/20 shadow-xl transition-all duration-500 ease-out"
         :class="[
           showMobileMenu 
             ? 'opacity-100 translate-y-0 pointer-events-auto' 
@@ -107,7 +107,7 @@
             v-for="item in menuItems" 
             :key="item.hash"
             :href="item.hash" 
-            @click.prevent="scrollToSection(item.hash)"
+            @click="scrollToSection(item.hash)"
             class="group flex items-center space-x-3 px-4 py-3 rounded-2xl font-semibold transition-all duration-300"
             :class="[
               activeHash === item.hash 
@@ -198,7 +198,7 @@ const scrollToSection = (hash) => {
   setActive(hash)
   showMobileMenu.value = false
 
-  const top = window.scrollY + el.getBoundingClientRect().top - (NAV_OFFSET + 8)
+  const top = window.scrollY + el.getBoundingClientRect().top - (NAV_OFFSET.value + 8)
   window.scrollTo({ top, behavior: 'smooth' })
   history.pushState(null, '', hash)
 }
@@ -216,29 +216,8 @@ const handleClickOutside = (event) => {
 }
 
 onMounted(() => {
-  // Detectar sección activa al hacer scroll
-  /*const handleScroll = () => {
-    const sections = menuItems.value.map(item => item.hash)
-    let currentSection = '#contact' // default
-    
-    for (const section of sections) {
-      const element = document.querySelector(section)
-      if (element) {
-        const rect = element.getBoundingClientRect()
-        // Si la sección está en el viewport (considerando el navbar)
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          currentSection = section
-        }
-      }
-    }
-    
-    if (currentSection !== activeHash.value) {
-      activeHash.value = currentSection
-    }
-  }*/
-
   const handleScroll = () => {
-    const viewportAnchor = NAV_OFFSET.value + 8 // un pelín de aire
+    const viewportAnchor = NAV_OFFSET.value + 8
     const defs = menuItems.value
       .map(i => ({ hash: i.hash, el: document.querySelector(i.hash) }))
       .filter(s => !!s.el)

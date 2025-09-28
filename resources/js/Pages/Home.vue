@@ -158,99 +158,127 @@
             </div>
           </section>
 
-          <!-- Experiencia Profesional — Timeline limpio (sin card dentro de card) -->
           <section id="projects" class="lg:col-span-12 mt-12">
-            <div class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl p-12 shadow-2xl border border-white/50">
-              <!-- Background suave -->
-              <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <!-- Glow arriba izquierda -->
-                <div class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-indigo-400/20 to-purple-400/10 rounded-full blur-4xl"></div>
-
-                <!-- Glow abajo derecha -->
-                <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tr from-pink-400/20 to-purple-400/10 rounded-full blur-4xl"></div>
-
-                <!-- Glow lateral (extra sutil) -->
-                <div class="absolute top-1/3 -right-40 w-[28rem] h-[28rem] bg-gradient-to-l from-indigo-300/10 to-transparent rounded-full blur-5xl"></div>
-              </div>
-
-              <div class="relative z-10 max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-black text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-12">
-                  Experiencia Profesional
-                </h2>
-
-                <div class="relative">
-                  <!-- Línea del timeline -->
-                  <div class="absolute left-6 md:left-1/2 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 rounded-full opacity-60"></div>
-
-                  <ul class="space-y-10">
-                    <li v-for="(exp, index) in experiences" :key="index" class="relative">
-                      <div class="absolute left-6 md:left-1/2 -translate-x-1/2 -top-1">
-                        <span class="relative block w-3.5 h-3.5 rounded-full bg-white ring-4 ring-indigo-200 shadow-lg">
-                          <!-- Halo fijo suave -->
-                          <span class="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 opacity-50 blur-[10px]"></span>
-                          <!-- Halo animado (ping) -->
-                          <span class="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 animate-ping opacity-40"></span>
-                          <!-- Brillo leve (pulse) -->
-                          <span class="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 animate-pulse opacity-30"></span>
-                        </span>
-                      </div>
-
-                      <!-- Contenido: dos columnas que colapsan -->
-                      <div class="grid md:grid-cols-2 gap-8 items-start">
-                        <!-- Columna izquierda (o derecha alterna si quieres) -->
-                        <div class="md:text-right md:pr-10" :class="index % 2 === 1 ? 'md:order-2 md:text-left md:pl-10 md:pr-0' : ''">
-                          <div class="inline-flex items-center gap-3">
-                            <img :src="exp.icon" :alt="exp.company" class="w-10 h-10 rounded-xl bg-white/80 border border-white/60 shadow" />
-                            <div class="text-sm font-semibold text-gray-500">{{ exp.period }}</div>
-                          </div>
-                          <h3 class="mt-3 text-2xl font-bold text-gray-900">{{ exp.role }}</h3>
-                          <p class="text-gray-600">{{ exp.company }}</p>
-                        </div>
-
-                        <!-- Columna derecha (o izquierda alterna) -->
-                        <div class="bg-white/70 backdrop-blur-xl border border-white/60 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500"
-                            :class="index % 2 === 1 ? 'md:order-1' : ''">
-                          <p class="text-gray-700 leading-relaxed mb-4">
-                            {{ exp.description }}
-                          </p>
-
-                          <ul class="text-gray-700 space-y-2 mb-5">
-                            <li v-for="(item, i) in exp.achievements" :key="i" class="flex items-start gap-2">
-                              <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"></span>
-                              <span>{{ item }}</span>
-                            </li>
-                          </ul>
-
-                          <!-- Chips con iconitos reutilizando techMap -->
-                          <div class="flex flex-wrap gap-2">
-                            <span v-for="(t, j) in exp.tech" :key="j"
-                                  class="px-3 py-1.5 rounded-full text-sm font-semibold text-indigo-800 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200 inline-flex items-center gap-2 hover:scale-105 transition-transform">
-                              <template v-if="techMap && techMap[t]">
-                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-white/70 ring-1 ring-indigo-200 overflow-hidden">
-                                  <span v-if="techMap[t].type === 'svg'" v-html="techMap[t].icon" class="w-3.5 h-3.5"></span>
-                                  <img v-else :src="techMap[t].icon" :alt="t" class="w-3.5 h-3.5 object-contain" />
-                                </span>
-                              </template>
-                              <span>{{ t }}</span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
-                  <div class="mt-12 text-center">
-                    <div class="inline-flex items-center gap-2 px-6 py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-full shadow-lg">
-                      <div class="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
-                      <p class="text-xs text-gray-600 font-medium">
-                        Los logos mostrados pertenecen a sus respectivas marcas y se utilizan únicamente con fines descriptivos.
-                      </p>
-                    </div>
-                  </div>
+            <div class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl p-6 md:p-12 shadow-2xl border border-white/50">
+                <!-- Background suave -->
+                <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                    <!-- Glow arriba izquierda -->
+                    <div class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-indigo-400/20 to-purple-400/10 rounded-full blur-4xl"></div>
+                    <!-- Glow abajo derecha -->
+                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tr from-pink-400/20 to-purple-400/10 rounded-full blur-4xl"></div>
                 </div>
-              </div>
+
+                <div class="relative z-10 max-w-6xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8 md:mb-12">
+                        Experiencia Profesional
+                    </h2>
+
+                    <div class="relative">
+                        <!-- Línea del timeline - Oculta en mobile, visible en desktop -->
+                        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-400 via-purple-400 to-pink-400 rounded-full opacity-60"></div>
+
+                        <!-- Timeline items -->
+                        <div class="space-y-8 md:space-y-12">
+                            <div v-for="(exp, index) in experiences" :key="index" class="relative">
+                                <!-- Dot para desktop -->
+                                <div class="hidden md:block absolute left-1/2 -translate-x-1/2 -top-1">
+                                    <span class="relative block w-4 h-4 rounded-full bg-white ring-4 ring-indigo-200 shadow-lg">
+                                        <span class="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 opacity-50 blur-sm"></span>
+                                        <span class="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 animate-ping opacity-40"></span>
+                                    </span>
+                                </div>
+
+                                <!-- Mobile: Stack layout -->
+                                <div class="md:hidden">
+                                    <!-- Header info -->
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <img :src="exp.icon" :alt="exp.company" 
+                                              class="w-12 h-12 rounded-xl bg-white/80 border border-white/60 shadow" />
+                                        <div>
+                                            <h3 class="text-lg font-bold text-gray-900">{{ exp.role }}</h3>
+                                            <p class="text-sm text-gray-600">{{ exp.company }}</p>
+                                            <div class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full inline-block mt-1">
+                                                {{ exp.period }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content card -->
+                                    <div class="bg-white/80 backdrop-blur-sm border border-white/60 rounded-2xl p-5 shadow-lg">
+                                        <p class="text-gray-700 leading-relaxed mb-4">
+                                            {{ exp.description }}
+                                        </p>
+
+                                        <ul class="text-gray-700 space-y-2 mb-4 text-sm">
+                                            <li v-for="(item, i) in exp.achievements" :key="i" class="flex items-start gap-2">
+                                                <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex-shrink-0"></span>
+                                                <span>{{ item }}</span>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Tech chips -->
+                                        <div class="flex flex-wrap gap-1.5">
+                                            <span v-for="(t, j) in exp.tech" :key="j"
+                                                  class="px-2.5 py-1 rounded-full text-xs font-medium text-indigo-800 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200">
+                                                {{ t }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Desktop: Two column layout -->
+                                <div class="hidden md:grid grid-cols-2 gap-8 items-start">
+                                    <!-- Columna izquierda/derecha alternante -->
+                                    <div class="text-right pr-10" :class="index % 2 === 1 ? 'order-2 text-left pl-10 pr-0' : ''">
+                                        <div class="inline-flex items-center gap-3">
+                                            <img :src="exp.icon" :alt="exp.company" 
+                                                  class="w-10 h-10 rounded-xl bg-white/80 border border-white/60 shadow" />
+                                            <div class="text-sm font-semibold text-gray-500">{{ exp.period }}</div>
+                                        </div>
+                                        <h3 class="mt-3 text-2xl font-bold text-gray-900">{{ exp.role }}</h3>
+                                        <p class="text-gray-600">{{ exp.company }}</p>
+                                    </div>
+
+                                    <!-- Content card -->
+                                    <div class="bg-white/70 backdrop-blur-xl border border-white/60 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500"
+                                          :class="index % 2 === 1 ? 'order-1' : ''">
+                                        <p class="text-gray-700 leading-relaxed mb-4">
+                                            {{ exp.description }}
+                                        </p>
+
+                                        <ul class="text-gray-700 space-y-2 mb-5">
+                                            <li v-for="(item, i) in exp.achievements" :key="i" class="flex items-start gap-2">
+                                                <span class="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"></span>
+                                                <span>{{ item }}</span>
+                                            </li>
+                                        </ul>
+
+                                        <!-- Tech chips -->
+                                        <div class="flex flex-wrap gap-2">
+                                            <span v-for="(t, j) in exp.tech" :key="j"
+                                                  class="px-3 py-1.5 rounded-full text-sm font-semibold text-indigo-800 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200 hover:scale-105 transition-transform">
+                                                {{ t }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer disclaimer -->
+                        <div class="mt-8 md:mt-12 text-center">
+                            <div class="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/60 backdrop-blur-lg border border-white/40 rounded-full shadow-lg">
+                                <div class="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                                <p class="text-xs text-gray-600 font-medium">
+                                    Los logos mostrados pertenecen a sus respectivas marcas y se utilizan únicamente con fines descriptivos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </section>
+        </section>
+
 
           <!-- Sección Sobre mí renovada -->
           <section id="about" class="lg:col-span-12 mt-12">
@@ -378,14 +406,17 @@ const experiences = ref([
     company: 'Trioteca',
     icon: '/storage/images/trioteca.png',
     role: 'Full Stack Developer',
-    period: '2024 – 2025',
-    description: 'Desarrollo de componentes para la gestión de tasaciones inmobiliarias dentro del CRM.',
+    period: '2025 - Actualidad',
+    description: 'Desarrollo web, zona de usuario + desarollo CRM corporación',
     achievements: [
-      'Implementación de módulo de seguimiento de tasaciones con Laravel Livewire',
-      'Automatización de notificaciones a clientes vía correo electrónico',
-      'Optimización de rendimiento y auditoría con Laravel Auditing'
+      'Implementación nuevas funcionalidades zona de usuario -> usuario puede enviar leads autónomos al banco para solicitar hipoteca',
+      'Automatización de notificaciones a clientes vía correo electrónico y whatsapps',
+      'Implementación módulo tasaciones online',
+      'Desarollo extracción datos DNI, nóminas con OCR textract / IA Gémini',
+      'Desarollo front end con estrecha comunicación con designers',
+      'Desarollo proyecto front agnóstico para nueva web -> Serverless framework + Nuxt.js'
     ],
-    tech: ['Laravel', 'Livewire', 'Vue.js', 'Laravel Nova']
+    tech: ['Laravel', 'Vue.js', 'Laravel Nova', 'IA', 'AWS']
   },
   {
     company: 'Clicktotravel',
@@ -396,22 +427,24 @@ const experiences = ref([
     achievements: [
       'Implementación de CMS en Laravel 10 con roles y permisos (Spatie)',
       'Generación automática de sitemaps con cronjobs',
-      'Integración de BunnyCDN para optimización de contenido'
+      'Integración de BunnyCDN para optimización de contenido',
+      'Integración chatGPT IA para funcionalidad de ofertas hoteles'
     ],
     tech: ['Laravel', 'MySQL', 'BunnyCDN', 'Spatie Roles/Permissions']
   },
   {
     company: 'Avannubo',
     role: 'Full Stack Developer',
-    period: '2025 – Actualidad',
+    period: '2022 - 2023',
     description: 'Desarrollo y evolución de funcionalidades core en entorno Laravel + Vue con enfoque en rendimiento y DX.',
     achievements: [
       'Migración y estandarización a Laravel 10 y Vite',
-      'Componentes UI en Vue.js con estados y tests',
-      'CI/CD con GitHub Actions y despliegues Docker',
-      'Optimización de consultas y caché (MySQL) + auditoría de cambios'
+      'Desarollo y mantenimiento proyectos de terceros, sobretodo CRM',
+      'Desarollo CRM que se conecta con API SharePoint',
+      'Desarollo funcionalidad ticketing para uso interno empresa',
+      'Optimización de consultas y caché',
     ],
-    tech: ['Laravel', 'Vue.js', 'MySQL', 'Docker', 'AWS', 'JIRA'],
+    tech: ['Laravel', 'Vue.js', 'Livewire', 'MySQL', 'Docker'],
     icon: '/storage/images/avannubo.png'
   }
 ])
