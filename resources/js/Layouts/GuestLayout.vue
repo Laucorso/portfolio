@@ -165,24 +165,24 @@ const measureNav = () => {
 const menuItems = ref([
   { 
     hash: '#contact', 
-    text: 'Contacto', 
+    text: 'Contact', 
     activeColor: 'bg-gradient-to-r from-green-400 to-emerald-500' 
   },
   { 
     hash: '#tech', 
-    text: 'Tecnologías', 
+    text: 'Technologies', 
     activeColor: 'bg-gradient-to-r from-blue-400 to-cyan-500' 
   },
   { 
-    hash: '#about', 
-    text: 'Sobre mí', 
-    activeColor: 'bg-gradient-to-r from-purple-400 to-pink-500' 
+    hash: '#projects', 
+    text: 'Projects', 
+    activeColor: 'bg-gradient-to-r from-orange-400 to-red-500' 
   },
   { 
-    hash: '#projects', 
-    text: 'Proyectos', 
-    activeColor: 'bg-gradient-to-r from-orange-400 to-red-500' 
-  }
+    hash: '#about', 
+    text: 'About', 
+    activeColor: 'bg-gradient-to-r from-purple-400 to-pink-500' 
+  },
 ])
 
 const setActive = (hash) => {

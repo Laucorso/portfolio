@@ -51,7 +51,7 @@
               </h2>
 
               <p class="mb-4">
-                Abierta a involucrarme en proyectos innovadores y a formar parte de equipos que buscan dar un paso más en lo digital.  
+                Open to getting involved in innovative projects and being part of teams that strive to take digital a step further.
               </p>
 
               <!-- Información de contacto con micro-animaciones -->
@@ -123,7 +123,7 @@
                 <h2 class="text-4xl font-black bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-4">
                   Tech Stack
                 </h2>
-                <p class="text-gray-400">Herramientas con las que trabajo día a día</p>
+                <p class="text-gray-400">Tools I work with on a daily basis</p>
                 <div class="w-20 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto mt-4 rounded-full"></div>
               </div>
 
@@ -170,7 +170,7 @@
 
                 <div class="relative z-10 max-w-6xl mx-auto">
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8 md:mb-12">
-                        Experiencia Profesional
+                        Profesional Experiences
                     </h2>
 
                     <div class="relative">
@@ -279,54 +279,51 @@
             </div>
         </section>
 
+        <section id="about" class="lg:col-span-12 mt-12">
+          <div class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl p-12 shadow-2xl border border-white/50">
+            <!-- Background patterns -->
+            <div class="absolute inset-0 opacity-5">
+              <div class="absolute top-10 left-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl"></div>
+              <div class="absolute bottom-10 right-10 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-pink-500 rounded-full blur-3xl"></div>
+            </div>
 
-          <!-- Sección Sobre mí renovada -->
-          <section id="about" class="lg:col-span-12 mt-12">
-            <div class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl p-12 shadow-2xl border border-white/50">
-              <!-- Background patterns -->
-              <div class="absolute inset-0 opacity-5">
-                <div class="absolute top-10 left-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl"></div>
-                <div class="absolute bottom-10 right-10 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-pink-500 rounded-full blur-3xl"></div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+              <h2 class="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8">
+                My Story
+              </h2>
+              
+              <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-gray-700">
+                  <span class="inline-block w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mr-4 align-middle rounded-full"></span>
+                  My journey began in the classrooms of <span class="font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Philosophy</span> at the University of Barcelona, where I learned to <span class="italic">unravel complexity</span> and see the world from multiple perspectives.
+                </p>
+                
+                <p class="text-gray-700">
+                  <span class="inline-block w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mr-4 align-middle rounded-full"></span>
+                  Curiosity led me to the fascinating world of <span class="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">technology</span>, where I discovered that programming is like philosophizing: it’s about <span class="italic">building worlds from pure logic</span>.
+                </p>
+                
+                <p class="text-gray-700">
+                  <span class="inline-block w-16 h-1 bg-gradient-to-r from-pink-500 to-orange-500 mr-4 align-middle rounded-full"></span>
+                  Today I merge both worlds: the <span class="font-bold">depth of critical thinking</span> with the <span class="font-bold">agility of digital solutions</span>, creating experiences that not only work but also <span class="italic bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">transcend</span>.
+                </p>
               </div>
 
-              <div class="relative z-10 max-w-4xl mx-auto text-center">
-                <h2 class="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8">
-                  Mi Historia
-                </h2>
-                
-                <div class="space-y-8 text-lg leading-relaxed">
-                  <p class="text-gray-700">
-                    <span class="inline-block w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mr-4 align-middle rounded-full"></span>
-                    Mi viaje comenzó en las aulas de <span class="font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Filosofía</span> en la Universidad de Barcelona, donde aprendí a <span class="italic">desentrañar la complejidad</span> y ver el mundo desde múltiples perspectivas.
-                  </p>
-                  
-                  <p class="text-gray-700">
-                    <span class="inline-block w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mr-4 align-middle rounded-full"></span>
-                    La curiosidad me llevó al fascinante mundo de la <span class="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">tecnología</span>, donde descubrí que programar es como filosofar: se trata de <span class="italic">construir mundos desde la lógica pura</span>.
-                  </p>
-                  
-                  <p class="text-gray-700">
-                    <span class="inline-block w-16 h-1 bg-gradient-to-r from-pink-500 to-orange-500 mr-4 align-middle rounded-full"></span>
-                    Hoy fusiono ambos mundos: la <span class="font-bold">profundidad del pensamiento crítico</span> con la <span class="font-bold">agilidad de las soluciones digitales</span>, creando experiencias que no solo funcionan, sino que <span class="italic bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">trascienden</span>.
-                  </p>
-                </div>
-
-                <div class="mt-12 flex flex-wrap justify-center gap-4">
-                  <span class="px-6 py-3 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200 rounded-full text-indigo-800 font-semibold hover:scale-105 transition-transform">
-                    🧠 Pensamiento crítico
-                  </span>
-                  <span class="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-200 rounded-full text-purple-800 font-semibold hover:scale-105 transition-transform">
-                    💡 Creatividad técnica
-                  </span>
-                  <span class="px-6 py-3 bg-gradient-to-r from-pink-100 to-orange-100 border border-pink-200 rounded-full text-pink-800 font-semibold hover:scale-105 transition-transform">
-                    🚀 Innovación constante
-                  </span>
-                </div>
+              <div class="mt-12 flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-3 bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200 rounded-full text-indigo-800 font-semibold hover:scale-105 transition-transform">
+                  🧠 Critical Thinking
+                </span>
+                <span class="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 border border-purple-200 rounded-full text-purple-800 font-semibold hover:scale-105 transition-transform">
+                  💡 Technical Creativity
+                </span>
+                <span class="px-6 py-3 bg-gradient-to-r from-pink-100 to-orange-100 border border-pink-200 rounded-full text-pink-800 font-semibold hover:scale-105 transition-transform">
+                  🚀 Constant Innovation
+                </span>
               </div>
             </div>
-          </section>
-
+          </div>
+        </section>
         </div>
       </div>
     </div>
@@ -406,29 +403,29 @@ const experiences = ref([
     company: 'Trioteca',
     icon: '/storage/images/trioteca.png',
     role: 'Full Stack Developer',
-    period: '2025 - Actualidad',
-    description: 'Desarrollo web, zona de usuario + desarollo CRM corporación',
+    period: '2025 - Present',
+    description: 'Web development, user area + corporate CRM development',
     achievements: [
-      'Implementación nuevas funcionalidades zona de usuario -> usuario puede enviar leads autónomos al banco para solicitar hipoteca',
-      'Automatización de notificaciones a clientes vía correo electrónico y whatsapps',
-      'Implementación módulo tasaciones online',
-      'Desarollo extracción datos DNI, nóminas con OCR textract / IA Gémini',
-      'Desarollo front end con estrecha comunicación con designers',
-      'Desarollo proyecto front agnóstico para nueva web -> Serverless framework + Nuxt.js'
+      'Implemented new features in the user area -> users can independently send leads to banks to apply for a mortgage',
+      'Automated client notifications via email and WhatsApp',
+      'Developed online appraisal module',
+      'Built data extraction from ID cards and payslips using OCR Textract / Gemini AI',
+      'Frontend development with close collaboration with designers',
+      'Developed front-agnostic project for new website -> Serverless framework + Nuxt.js'
     ],
-    tech: ['Laravel', 'Vue.js', 'Laravel Nova', 'IA', 'AWS']
+    tech: ['Laravel', 'Vue.js', 'Laravel Nova', 'AI', 'AWS']
   },
   {
     company: 'Clicktotravel',
     icon: '/storage/images/clicktotravel.png',
     role: 'Backend Developer',
     period: '2023 – 2024',
-    description: 'Desarrollo de CMS a medida para gestión de hoteles con enfoque SEO.',
+    description: 'Custom CMS development for hotel management with SEO focus.',
     achievements: [
-      'Implementación de CMS en Laravel 10 con roles y permisos (Spatie)',
-      'Generación automática de sitemaps con cronjobs',
-      'Integración de BunnyCDN para optimización de contenido',
-      'Integración chatGPT IA para funcionalidad de ofertas hoteles'
+      'Implemented CMS in Laravel 10 with roles and permissions (Spatie)',
+      'Automated sitemap generation with cronjobs',
+      'Integrated BunnyCDN for content optimization',
+      'Integrated ChatGPT AI for hotel offers functionality'
     ],
     tech: ['Laravel', 'MySQL', 'BunnyCDN', 'Spatie Roles/Permissions']
   },
@@ -436,13 +433,13 @@ const experiences = ref([
     company: 'Avannubo',
     role: 'Full Stack Developer',
     period: '2022 - 2023',
-    description: 'Desarrollo y evolución de funcionalidades core en entorno Laravel + Vue con enfoque en rendimiento y DX.',
+    description: 'Development and enhancement of core functionalities in a Laravel + Vue environment with focus on performance and DX.',
     achievements: [
-      'Migración y estandarización a Laravel 10 y Vite',
-      'Desarollo y mantenimiento proyectos de terceros, sobretodo CRM',
-      'Desarollo CRM que se conecta con API SharePoint',
-      'Desarollo funcionalidad ticketing para uso interno empresa',
-      'Optimización de consultas y caché',
+      'Migration and standardization to Laravel 10 and Vite',
+      'Development and maintenance of third-party projects, mainly CRMs',
+      'Developed CRM integrated with SharePoint API',
+      'Developed internal ticketing functionality for company use',
+      'Query and cache optimization',
     ],
     tech: ['Laravel', 'Vue.js', 'Livewire', 'MySQL', 'Docker'],
     icon: '/storage/images/avannubo.png'
