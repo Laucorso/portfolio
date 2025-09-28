@@ -281,12 +281,29 @@
 
         <section id="about" class="lg:col-span-12 mt-12">
           <div class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl p-12 shadow-2xl border border-white/50">
-            <!-- Background patterns -->
-            <div class="absolute inset-0 opacity-5">
-              <div class="absolute top-10 left-10 w-32 h-32 bg-indigo-500 rounded-full blur-3xl"></div>
-              <div class="absolute bottom-10 right-10 w-32 h-32 bg-purple-500 rounded-full blur-3xl"></div>
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-pink-500 rounded-full blur-3xl"></div>
-            </div>
+
+                    <!-- Orbes flotantes animadas -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full floating-orb animate-slide-right-1"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full floating-orb animate-slide-right-2"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full floating-orb animate-slide-right-3"></div>
+        </div>
+        
+        <!-- Orbes adicionales para más movimiento -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-0 w-24 h-24 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full floating-orb animate-slide-right-2" style="animation-delay: -1s;"></div>
+            <div class="absolute bottom-20 left-0 w-20 h-20 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full floating-orb animate-slide-right-1" style="animation-delay: -4s;"></div>
+            <div class="absolute top-32 right-0 w-28 h-28 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full floating-orb animate-slide-right-3" style="animation-delay: -2s;"></div>
+        </div>
+        
+        <!-- Partículas brillantes -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-16 left-20 w-2 h-2 bg-white rounded-full sparkle"></div>
+            <div class="absolute top-24 right-32 w-1 h-1 bg-indigo-300 rounded-full sparkle" style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-32 left-40 w-1.5 h-1.5 bg-purple-300 rounded-full sparkle" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-16 right-16 w-2 h-2 bg-pink-300 rounded-full sparkle" style="animation-delay: 2s;"></div>
+            <div class="absolute top-40 left-1/2 w-1 h-1 bg-white rounded-full sparkle" style="animation-delay: 0.8s;"></div>
+        </div>
 
             <div class="relative z-10 max-w-4xl mx-auto text-center">
               <h2 class="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8">
@@ -510,4 +527,98 @@ onMounted(() => {
     transform: scale(1.1);
   }
 }
+
+  @keyframes slideRight {
+      0% {
+          transform: translateX(-100%);
+      }
+      100% {
+          transform: translateX(100vw);
+      }
+  }
+  
+  @keyframes floatRight {
+      0% {
+          transform: translateX(-200px) translateY(0px);
+          opacity: 0;
+      }
+      50% {
+          opacity: 1;
+      }
+      100% {
+          transform: translateX(calc(100vw + 200px)) translateY(-20px);
+          opacity: 0;
+      }
+  }
+  
+  @keyframes waveRight {
+      0% {
+          transform: translateX(-150px) scale(0.8);
+          opacity: 0;
+      }
+      30% {
+          opacity: 1;
+          transform: translateX(20%) scale(1);
+      }
+      70% {
+          opacity: 1;
+          transform: translateX(80%) scale(1.1);
+      }
+      100% {
+          transform: translateX(calc(100vw + 150px)) scale(0.8);
+          opacity: 0;
+      }
+  }
+  
+  @keyframes gradientShift {
+      0% {
+          background-position: -200% center;
+      }
+      100% {
+          background-position: 200% center;
+      }
+  }
+  
+  .animate-slide-right-1 {
+      animation: slideRight 8s ease-in-out infinite;
+  }
+  
+  .animate-slide-right-2 {
+      animation: floatRight 10s ease-in-out infinite;
+      animation-delay: -3s;
+  }
+  
+  .animate-slide-right-3 {
+      animation: waveRight 12s ease-in-out infinite;
+      animation-delay: -6s;
+  }
+  
+  .animate-gradient-x {
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
+  }
+  
+  .floating-orb {
+      filter: blur(40px);
+  }
+  
+  /* Efectos adicionales de partículas */
+  @keyframes sparkle {
+      0%, 100% {
+          opacity: 0;
+          transform: scale(0) rotate(0deg);
+      }
+      50% {
+          opacity: 1;
+          transform: scale(1) rotate(180deg);
+      }
+  }
+  
+  .sparkle {
+      animation: sparkle 2s ease-in-out infinite;
+  }
+  
+  .sparkle:nth-child(odd) {
+      animation-delay: 1s;
+  }
 </style>
