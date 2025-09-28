@@ -40,7 +40,7 @@
               v-for="item in menuItems" 
               :key="item.hash"
               :href="item.hash" 
-              @click="scrollToSection(item.hash)"
+              @click.prevent="scrollToSection(item.hash)"
               class="group relative overflow-hidden px-6 py-2 rounded-full font-semibold text-gray-700 hover:text-gray-900 transition-all duration-300"
               :class="[
                 activeHash === item.hash 
@@ -185,11 +185,11 @@ const menuItems = ref([
   }
 ])
 
-// Funciones
 const setActive = (hash) => {
   activeHash.value = hash
 }
 
+const isAutoScrolling = ref(false)
 
 const scrollToSection = (hash) => {
   const el = document.querySelector(hash)
@@ -199,10 +199,24 @@ const scrollToSection = (hash) => {
   showMobileMenu.value = false
 
   const top = window.scrollY + el.getBoundingClientRect().top - (NAV_OFFSET.value + 8)
+  isAutoScrolling.value = true
   window.scrollTo({ top, behavior: 'smooth' })
-  history.pushState(null, '', hash)
-}
 
+  // Actualiza URL sin disparar hashchange
+  history.pushState(null, '', hash)
+
+  // Fin del scroll programático
+  const end = () => {
+    isAutoScrolling.value = false
+    handleScroll()
+    window.removeEventListener('scrollend', end)
+  }
+  if ('onscrollend' in window) {
+    window.addEventListener('scrollend', end, { once: true })
+  } else {
+    setTimeout(end, 500)
+  }
+}
 
 const toggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value
@@ -216,72 +230,49 @@ const handleClickOutside = (event) => {
 }
 
 onMounted(() => {
+  measureNav()
+  window.addEventListener('resize', measureNav)
+
   const handleScroll = () => {
-    const viewportAnchor = NAV_OFFSET.value + 8
+    if (isAutoScrolling.value) return
+
+    const viewportAnchor = window.scrollY + NAV_OFFSET.value + 8
     const defs = menuItems.value
       .map(i => ({ hash: i.hash, el: document.querySelector(i.hash) }))
       .filter(s => !!s.el)
+      .sort((a, b) => {
+        const topA = window.scrollY + a.el.getBoundingClientRect().top
+        const topB = window.scrollY + b.el.getBoundingClientRect().top
+        return topA - topB
+      })
 
-    // fallback por si no hay ninguna sección renderizada
     if (!defs.length) return
 
-    // Por defecto, la primera (para top de página)
     let current = defs[0].hash
-
-    // Recorre en orden y toma la ÚLTIMA cuyo top ya pasó bajo el navbar
     for (const s of defs) {
-      const top = s.el.getBoundingClientRect().top
-      if (top - viewportAnchor <= 0) {
-        current = s.hash
-      } else {
-        break // como están en orden, podemos cortar
-      }
+      const sectionTop = window.scrollY + s.el.getBoundingClientRect().top
+      if (sectionTop <= viewportAnchor) current = s.hash
+      else break
     }
-
-    if (current !== activeHash.value) {
-      activeHash.value = current
-    }
+    if (current !== activeHash.value) activeHash.value = current
   }
-  
-  // Escuchar scroll para detectar sección activa
-  window.addEventListener('scroll', handleScroll)
-  
-  // Escuchar cambios en el hash (por si se navega con back/forward)
-  window.addEventListener('hashchange', () => {
+
+  window.addEventListener('scroll', handleScroll, { passive: true })
+
+  const onHashChange = () => {
     activeHash.value = window.location.hash || '#contact'
     showMobileMenu.value = false
-  })
+  }
+  window.addEventListener('hashchange', onHashChange)
 
-  // Cerrar menú móvil al hacer clic fuera
   document.addEventListener('click', handleClickOutside)
 
-  // Detectar sección inicial
   handleScroll()
 
-  // Estilos adicionales para animaciones
-  const style = document.createElement('style')
-  style.textContent = `
-    .animation-delay-1000 {
-      animation-delay: 1s;
-    }
-    
-    /* Smooth scroll para las anclas */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Backdrop blur mejorado */
-    .backdrop-blur-xl {
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-  `
-  document.head.appendChild(style)
-  
-  // Cleanup
   return () => {
+    window.removeEventListener('resize', measureNav)
     window.removeEventListener('scroll', handleScroll)
-    window.removeEventListener('hashchange', handleScroll)
+    window.removeEventListener('hashchange', onHashChange)
     document.removeEventListener('click', handleClickOutside)
   }
 })
