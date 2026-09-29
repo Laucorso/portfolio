@@ -105,7 +105,9 @@
                                             class="museum-portrait"
                                         />
                                     </div>
-                                    <div class="museum-photo-quote museum-reveal w-full pt-4 md:pt-5">
+                                    <div
+                                        class="museum-photo-quote museum-reveal w-full pt-4 md:pt-5"
+                                    >
                                         <p
                                             class="museum-quote-line museum-quote-line-1 mt-3 max-w-[22rem] font-display text-[1.2rem] leading-[1.05] tracking-[-0.04em] text-[#274a78] md:max-w-[30rem] md:text-[2.1rem]"
                                         >
@@ -119,7 +121,8 @@
                                         <p
                                             class="museum-quote-line museum-quote-line-3 mt-1 max-w-[22rem] font-display text-[1.15rem] leading-[1.12] tracking-[-0.04em] text-[#274a78] md:max-w-[32rem] md:text-[1.8rem]"
                                         >
-                                            solid thinking and professional execution.
+                                            solid thinking and professional
+                                            execution.
                                         </p>
                                     </div>
                                 </div>
@@ -158,7 +161,6 @@
                                     and details that do not distract from the
                                     work.
                                 </p>
-
                             </div>
 
                             <div
@@ -1151,7 +1153,9 @@ onUnmounted(() => {
     background: rgba(255, 255, 255, 0.92);
     color: #102846;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
-    transition: transform 180ms ease, box-shadow 180ms ease;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .museum-tech-object-inner:hover {
