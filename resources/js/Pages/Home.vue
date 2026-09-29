@@ -533,7 +533,7 @@ const translations = {
             title: "Construint amb intenció.",
             description:
                 "Oberta a projectes on la tecnologia es tracta com un ofici, el disseny es valora amb cura i les decisions ètiques formen part del procés.",
-            quoteLine1: "BONA TECNOLOGIA",
+            quoteLine1: "LA BONA TECNOLOGIA",
             quoteLine2: "comença amb decisions clares,",
             quoteLine3: "pensament sòlid i execució professional.",
             note: "TECNOLOGIA · ÈTICA · CONFIANÇA",
