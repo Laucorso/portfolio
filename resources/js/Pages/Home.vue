@@ -17,10 +17,22 @@
                         ></p>
 
                         <h1
-                            class="museum-hero-punch font-display mt-6 text-6xl md:text-7xl lg:text-8xl font-semibold leading-[0.9] text-slate-900"
+                            class="museum-hero-punch mt-6 text-6xl md:text-7xl lg:text-8xl leading-[0.84] text-slate-900"
                         >
-                            Independent Product
-                            <span class="block text-[#274a78]">Developer</span>
+                            <span
+                                class="font-display block tracking-[-0.065em] font-medium"
+                            >
+                                Independent Product
+                            </span>
+                            <span
+                                class="font-display block uppercase tracking-[0.18em] text-[#274a78]"
+                                style="
+                                    font-size: 0.62em;
+                                    letter-spacing: 0.18em;
+                                "
+                            >
+                                Developer
+                            </span>
                         </h1>
 
                         <p
