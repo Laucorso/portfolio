@@ -1,6 +1,10 @@
 <template>
     <GuestLayout>
-        <Head title="Laura Cormand" />
+        <Head
+            :title="
+                locale === 'ca' ? 'Laura Cormand | Portafoli' : 'Laura Cormand'
+            "
+        />
 
         <div class="museum-shell relative min-h-screen overflow-hidden">
             <div class="absolute inset-0 pointer-events-none">
@@ -22,7 +26,7 @@
                             <span
                                 class="font-display block tracking-[-0.065em] font-medium"
                             >
-                                Independent Product
+                                {{ t.hero.titleLineOne }}
                             </span>
                             <span
                                 class="font-display block uppercase tracking-[0.18em] text-[#274a78]"
@@ -31,31 +35,31 @@
                                     letter-spacing: 0.18em;
                                 "
                             >
-                                Developer
+                                {{ t.hero.titleLineTwo }}
                             </span>
                         </h1>
 
                         <p
                             class="museum-hero-punch museum-hero-punch-delay-1 font-body mx-auto mt-6 max-w-2xl text-base md:text-lg leading-8 text-slate-600"
                         >
-                            A quieter, more curated digital presence: precise
-                            interfaces, thoughtful motion and a perspective
-                            shaped by technology and ethics.
+                            {{ t.hero.subtitle }}
                         </p>
 
                         <div class="mt-8 flex flex-wrap justify-center gap-3">
                             <span
-                                class="museum-hero-punch museum-hero-punch-delay-2 museum-pill museum-pill-blue"
-                                >Product clarity</span
+                                v-for="(pill, index) in t.hero.pills"
+                                :key="pill"
+                                :class="[
+                                    'museum-hero-punch museum-pill',
+                                    index === 0
+                                        ? 'museum-pill-blue museum-hero-punch-delay-2'
+                                        : index === 1
+                                          ? 'museum-pill-lilac museum-hero-punch-delay-3'
+                                          : 'museum-pill-gold museum-hero-punch-delay-4',
+                                ]"
                             >
-                            <span
-                                class="museum-hero-punch museum-hero-punch-delay-3 museum-pill museum-pill-lilac"
-                                >Thoughtful systems</span
-                            >
-                            <span
-                                class="museum-hero-punch museum-hero-punch-delay-4 museum-pill museum-pill-gold"
-                                >Human-centered UX</span
-                            >
+                                {{ pill }}
+                            </span>
                         </div>
                     </header>
 
@@ -65,7 +69,7 @@
                             class="museum-flow-section museum-flow-left"
                         >
                             <div class="museum-flow-label museum-reveal">
-                                Contact / practice
+                                {{ t.contact.label }}
                             </div>
                             <div
                                 class="museum-flow-copy museum-reveal museum-reveal-delay-1"
@@ -73,16 +77,13 @@
                                 <p
                                     class="font-display text-4xl md:text-5xl text-slate-900 max-w-xl"
                                 >
-                                    Building with intention.
+                                    {{ t.contact.title }}
                                 </p>
 
                                 <p
                                     class="font-body mt-5 max-w-2xl text-base md:text-lg leading-8 text-slate-600"
                                 >
-                                    Open to joining projects where technology is
-                                    treated as a craft, design is considered
-                                    with care and ethical decisions are part of
-                                    the process.
+                                    {{ t.contact.description }}
                                 </p>
 
                                 <div class="mt-7 flex flex-wrap gap-3">
@@ -123,25 +124,24 @@
                                         <p
                                             class="museum-quote-line museum-quote-line-1 mt-3 max-w-[22rem] font-display text-[1.2rem] leading-[1.05] tracking-[-0.04em] text-[#274a78] md:max-w-[30rem] md:text-[2.1rem]"
                                         >
-                                            GOOD TECHNOLOGY
+                                            {{ t.contact.quoteLine1 }}
                                         </p>
                                         <p
                                             class="museum-quote-line museum-quote-line-2 mt-1 max-w-[22rem] font-display text-[2.1rem] font-semibold leading-[0.95] tracking-[-0.05em] text-[#274a78] md:max-w-[38rem] md:text-[3.4rem]"
                                         >
-                                            begins with clear decisions,
+                                            {{ t.contact.quoteLine2 }}
                                         </p>
                                         <p
                                             class="museum-quote-line museum-quote-line-3 mt-1 max-w-[22rem] font-display text-[1.15rem] leading-[1.12] tracking-[-0.04em] text-[#274a78] md:max-w-[32rem] md:text-[1.8rem]"
                                         >
-                                            solid thinking and professional
-                                            execution.
+                                            {{ t.contact.quoteLine3 }}
                                         </p>
                                     </div>
                                 </div>
                                 <p
                                     class="museum-note museum-reveal museum-reveal-delay-4 mt-4 font-body text-[0.62rem] uppercase tracking-[0.24em] text-slate-500"
                                 >
-                                    TECHNOLOGY · ETHICS · TRUST
+                                    {{ t.contact.note }}
                                 </p>
                             </div>
                         </section>
@@ -151,7 +151,7 @@
                             class="museum-flow-section museum-flow-left"
                         >
                             <div class="museum-flow-label museum-reveal">
-                                Professional experience
+                                {{ t.experience.label }}
                             </div>
                             <div
                                 class="museum-flow-copy museum-reveal museum-reveal-delay-1"
@@ -159,16 +159,13 @@
                                 <p
                                     class="font-display text-4xl md:text-5xl text-slate-900 max-w-xl"
                                 >
-                                    Highlighted chapters.
+                                    {{ t.experience.title }}
                                 </p>
 
                                 <p
                                     class="font-body mt-5 max-w-2xl text-base md:text-lg leading-8 text-slate-600"
                                 >
-                                    Instead of a hard timeline, this section
-                                    reads as three curated moments: the roles,
-                                    the context and the craft that define each
-                                    chapter.
+                                    {{ t.experience.description }}
                                 </p>
                             </div>
 
@@ -184,21 +181,19 @@
                                     <p
                                         class="font-body text-[0.68rem] uppercase tracking-[0.22em] text-slate-500"
                                     >
-                                        Autonomy
+                                        {{ t.experience.autonomy }}
                                     </p>
                                     <p
                                         class="font-display mt-6 text-3xl md:text-4xl text-slate-900 leading-tight"
                                     >
-                                        Independent work,<br />with structure
-                                        and perspective.
+                                        <span
+                                            v-html="t.experience.autonomyTitle"
+                                        ></span>
                                     </p>
                                     <p
                                         class="font-body mt-5 text-sm md:text-base leading-7 text-slate-600"
                                     >
-                                        I like building what is needed, from
-                                        idea to delivery: clear requirements,
-                                        quiet execution and a product that
-                                        actually holds up in use.
+                                        {{ t.experience.autonomyText }}
                                     </p>
                                     <a
                                         href="https://nafentbikes.com"
@@ -212,7 +207,7 @@
                                             <p
                                                 class="font-body text-[0.62rem] uppercase tracking-[0.2em] text-slate-500"
                                             >
-                                                Project work
+                                                {{ t.experience.projectWork }}
                                             </p>
                                             <img
                                                 src="https://nafentbikes.com/wp-content/uploads/2025/05/na_fent_bikes_rental_black_v1.svg"
@@ -338,7 +333,7 @@
                             <div
                                 class="museum-flow-label museum-flow-label-light museum-reveal"
                             >
-                                Studio tools
+                                {{ t.tools.label }}
                             </div>
                             <div
                                 class="museum-flow-copy museum-reveal museum-reveal-delay-1"
@@ -346,17 +341,13 @@
                                 <p
                                     class="font-display text-3xl md:text-4xl text-white max-w-xl"
                                 >
-                                    A restrained toolset for calm, reliable
-                                    product surfaces.
+                                    {{ t.tools.title }}
                                 </p>
 
                                 <p
                                     class="font-body mt-4 max-w-2xl text-sm md:text-base leading-7 text-slate-300"
                                 >
-                                    From databases to infrastructure and
-                                    deployment, every layer is chosen to keep
-                                    technology services reliable, scalable and
-                                    easy to maintain.
+                                    {{ t.tools.description }}
                                 </p>
                             </div>
 
@@ -393,7 +384,7 @@
                             class="museum-flow-section museum-flow-right"
                         >
                             <div class="museum-flow-label museum-reveal">
-                                My story
+                                {{ t.about.label }}
                             </div>
                             <div
                                 class="museum-flow-copy museum-reveal museum-reveal-delay-1"
@@ -401,51 +392,37 @@
                                 <p
                                     class="font-display text-4xl md:text-5xl text-slate-900 max-w-xl"
                                 >
-                                    Philosophy, technology, ethics.
+                                    {{ t.about.title }}
                                 </p>
 
                                 <div
                                     class="mt-5 space-y-6 font-body text-base md:text-lg leading-8 text-slate-700 max-w-2xl"
                                 >
                                     <p>
-                                        My path began in the classrooms of
                                         <span
-                                            class="font-semibold text-[#274a78]"
-                                            >Philosophy</span
-                                        >
-                                        at the University of Barcelona, where I
-                                        learned to read complexity with
-                                        patience, context and perspective.
+                                            v-html="t.about.paragraph1"
+                                        ></span>
                                     </p>
                                     <p>
-                                        That training led naturally into
                                         <span
-                                            class="font-semibold text-[#8a78d8]"
-                                            >technology</span
-                                        >, where programming became a way to
-                                        shape structure, meaning and interaction
-                                        from first principles.
+                                            v-html="t.about.paragraph2"
+                                        ></span>
                                     </p>
                                     <p>
-                                        Today I work at the intersection of
-                                        those two worlds, combining critical
-                                        thinking, product sensitivity and
-                                        precise execution to build interfaces
-                                        that feel calm, deliberate and ethically
-                                        considered.
+                                        {{ t.about.paragraph3 }}
                                     </p>
                                 </div>
 
                                 <div class="mt-8 flex flex-wrap gap-3">
-                                    <span class="museum-ethic-tag"
-                                        >Philosophy</span
-                                    >
-                                    <span class="museum-ethic-tag"
-                                        >Technology</span
-                                    >
+                                    <span class="museum-ethic-tag">{{
+                                        t.about.tags.philosophy
+                                    }}</span>
+                                    <span class="museum-ethic-tag">{{
+                                        t.about.tags.technology
+                                    }}</span>
                                     <span
                                         class="museum-ethic-tag museum-ethic-tag-gold"
-                                        >Ethics</span
+                                        >{{ t.about.tags.ethics }}</span
                                     >
                                 </div>
                             </div>
@@ -454,8 +431,7 @@
                                 class="museum-flow-aside museum-quote-shell museum-reveal museum-reveal-delay-2"
                             >
                                 <p class="museum-quote">
-                                    The best interfaces are not louder. They are
-                                    more honest.
+                                    {{ t.about.quote }}
                                 </p>
                             </div>
                         </section>
@@ -469,7 +445,153 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import { onMounted, onUnmounted } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
+
+const locale = ref("en");
+
+const syncLocaleFromStorage = () => {
+    if (typeof window === "undefined") return;
+    const saved = window.localStorage.getItem("portfolio-language");
+    if (saved === "en" || saved === "ca") {
+        locale.value = saved;
+    }
+};
+
+if (typeof window !== "undefined") {
+    syncLocaleFromStorage();
+}
+
+const translations = {
+    en: {
+        hero: {
+            titleLineOne: "Independent Product",
+            titleLineTwo: "Developer",
+            subtitle:
+                "A quieter, more curated digital presence: precise interfaces, thoughtful motion and a perspective shaped by technology and ethics.",
+            pills: [
+                "Product clarity",
+                "Thoughtful systems",
+                "Human-centered UX",
+            ],
+        },
+        contact: {
+            label: "Contact / practice",
+            title: "Building with intention.",
+            description:
+                "Open to joining projects where technology is treated as a craft, design is considered with care and ethical decisions are part of the process.",
+            quoteLine1: "GOOD TECHNOLOGY",
+            quoteLine2: "begins with clear decisions,",
+            quoteLine3: "solid thinking and professional execution.",
+            note: "TECHNOLOGY · ETHICS · TRUST",
+        },
+        experience: {
+            label: "Professional experience",
+            title: "Highlighted chapters.",
+            description:
+                "Instead of a hard timeline, this section reads as three curated moments: the roles, the context and the craft that define each chapter.",
+            autonomy: "Autonomy",
+            autonomyTitle:
+                "Independent work,<br />with structure and perspective.",
+            autonomyText:
+                "I like building what is needed, from idea to delivery: clear requirements, quiet execution and a product that actually holds up in use.",
+            projectWork: "Project work",
+        },
+        tools: {
+            label: "Studio tools",
+            title: "A restrained toolset for calm, reliable product surfaces.",
+            description:
+                "From databases to infrastructure and deployment, every layer is chosen to keep technology services reliable, scalable and easy to maintain.",
+        },
+        about: {
+            label: "My story",
+            title: "Philosophy, technology, ethics.",
+            paragraph1:
+                'My path began in the classrooms of <span class="font-semibold text-[#274a78]">Philosophy</span> at the University of Barcelona, where I learned to read complexity with patience, context and perspective.',
+            paragraph2:
+                'That training led naturally into <span class="font-semibold text-[#8a78d8]">technology</span>, where programming became a way to shape structure, meaning and interaction from first principles.',
+            paragraph3:
+                "Today I work at the intersection of those two worlds, combining critical thinking, product sensitivity and precise execution to build interfaces that feel calm, deliberate and ethically considered.",
+            tags: {
+                philosophy: "Philosophy",
+                technology: "Technology",
+                ethics: "Ethics",
+            },
+            quote: "The best interfaces are not louder. They are more honest.",
+        },
+    },
+    ca: {
+        hero: {
+            titleLineOne: "Producte independent",
+            titleLineTwo: "Developer",
+            subtitle:
+                "Una presència digital més serena i cuidada: experiències precises, moviment pensat i una mirada formada per la tecnologia i l’ètica.",
+            pills: [
+                "Claredat de producte",
+                "Sistemes pensats",
+                "UX centrada en la persona",
+            ],
+        },
+        contact: {
+            label: "Contacte / pràctica",
+            title: "Construint amb intenció.",
+            description:
+                "Oberta a projectes on la tecnologia es tracta com un ofici, el disseny es valora amb cura i les decisions ètiques formen part del procés.",
+            quoteLine1: "BONA TECNOLOGIA",
+            quoteLine2: "comença amb decisions clares,",
+            quoteLine3: "pensament sòlid i execució professional.",
+            note: "TECNOLOGIA · ÈTICA · CONFIANÇA",
+        },
+        experience: {
+            label: "Experiència professional",
+            title: "Treballs i rols.",
+            description:
+                "En lloc d’una cronologia rígida, aquesta secció presenta tres etapes curades: el treball, el context i l’ofici que defineixen cada etapa.",
+            autonomy: "Autonomia",
+            autonomyTitle:
+                "Treball independent,<br />amb estructura i perspectiva.",
+            autonomyText:
+                "M’agrada construir allò que cal, des de la idea fins a la entrega: requisits clars, execució serena i un producte que aguanta bé l’ús real.",
+            projectWork: "Projectes",
+        },
+        tools: {
+            label: "Eines",
+            title: "Un conjunt de recursos senzill i fiable per crear productes sòlids.",
+            description:
+                "Des de la base de dades fins a la infraestructura i el desplegament, cada capa es tria per mantenir serveis tecnològics fiables, escalables i fàcils de mantenir.",
+        },
+        about: {
+            label: "La meva història",
+            title: "Filosofia, tecnologia, ètica.",
+            paragraph1:
+                'El meu recorregut va començar a les aules de <span class="font-semibold text-[#274a78]">Filosofia</span> de la Universitat de Barcelona, on vaig aprendre a llegir la complexitat amb paciència, context i perspectiva.',
+            paragraph2:
+                'Aquesta formació em va portar de manera natural cap a la <span class="font-semibold text-[#8a78d8]">tecnologia</span>, on la programació es va convertir en una manera de donar forma a l’estructura, el significat i la interacció des dels primers principis.',
+            paragraph3:
+                "Avui treballo a la intersecció d’aquests dos mons, combinant pensament crític, sensibilitat de producte i execució precisa per construir experiències tranquil·les, deliberades i considerades des de l’ètica.",
+            tags: {
+                philosophy: "Filosofia",
+                technology: "Tecnologia",
+                ethics: "Ètica",
+            },
+            quote: "Les millors interfícies no són més sorolloses. Són més honestes.",
+        },
+    },
+};
+
+const t = computed(() => translations[locale.value] || translations.en);
+
+const setLocale = (value) => {
+    const next = value === "ca" ? "ca" : "en";
+    locale.value = next;
+    if (typeof window !== "undefined") {
+        window.localStorage.setItem("portfolio-language", next);
+        window.dispatchEvent(
+            new CustomEvent("portfolio-language-change", {
+                detail: { locale: next },
+            }),
+        );
+    }
+};
 
 const technologies = [
     {
@@ -580,7 +702,18 @@ const experiences = [
 
 let revealObserver = null;
 
+const onLocaleChange = (event) => {
+    const next = event.detail?.locale ?? "en";
+    if (next === "en" || next === "ca") {
+        locale.value = next;
+    }
+};
+
 onMounted(() => {
+    syncLocaleFromStorage();
+
+    window.addEventListener("portfolio-language-change", onLocaleChange);
+
     const revealEls = document.querySelectorAll(".museum-reveal");
 
     if (!("IntersectionObserver" in window)) {
@@ -605,6 +738,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+    window.removeEventListener("portfolio-language-change", onLocaleChange);
     revealObserver?.disconnect();
 });
 </script>

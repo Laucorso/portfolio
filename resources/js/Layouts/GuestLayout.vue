@@ -37,74 +37,113 @@
                         </div>
 
                         <!-- Nombre con tipografía del proyecto -->
-                        <div class="flex flex-col">
+                        <div class="flex min-w-0 flex-col leading-none">
                             <span
-                                class="guest-brand font-display text-2xl text-[#223a5a] group-hover:text-[#274a78] transition-colors duration-300"
+                                class="guest-brand font-display text-lg sm:text-xl md:text-[1.55rem] lg:text-2xl text-[#223a5a] group-hover:text-[#274a78] transition-colors duration-300 whitespace-nowrap"
                             >
                                 Laura Cormand
                             </span>
                             <span
-                                class="font-body text-[10px] uppercase tracking-[0.28em] text-slate-500"
+                                class="hidden md:block font-body text-[8px] uppercase tracking-[0.22em] text-slate-500 leading-none"
                                 >Useful systems people trust</span
                             >
                         </div>
                     </div>
 
                     <!-- Menú de navegación -->
-                    <div class="hidden md:flex items-center space-x-2">
-                        <a
-                            v-for="item in menuItems"
-                            :key="item.hash"
-                            :href="item.hash"
-                            @click.prevent="scrollToSection(item.hash)"
-                            class="group relative overflow-hidden px-5 py-2.5 rounded-full font-body text-sm font-semibold tracking-[0.08em] uppercase text-slate-600 hover:text-slate-900 transition-all duration-300"
-                            :class="[
-                                activeHash === item.hash
-                                    ? 'bg-white/90 text-[#274a78] shadow-[0_10px_25px_rgba(15,23,42,0.08)] ring-1 ring-[#d9d0bf]'
-                                    : 'hover:bg-white/60',
-                            ]"
-                        >
-                            <div class="flex items-center space-x-2.5">
-                                <div
-                                    class="w-2 h-2 rounded-full transition-all duration-300"
-                                    :class="[
-                                        activeHash === item.hash
-                                            ? item.activeColor
-                                            : 'bg-slate-400 group-hover:bg-slate-600',
-                                    ]"
-                                ></div>
-                                <span>{{ item.text }}</span>
-                            </div>
+                    <div
+                        class="hidden md:flex items-center justify-end flex-1 gap-3 pl-8 xl:gap-4"
+                    >
+                        <div class="flex items-center gap-2 xl:gap-3">
+                            <a
+                                v-for="item in menuItems"
+                                :key="item.hash"
+                                :href="item.hash"
+                                @click.prevent="scrollToSection(item.hash)"
+                                class="group relative overflow-hidden px-4 py-2.5 rounded-full font-body text-[0.7rem] font-semibold tracking-[0.08em] uppercase text-slate-600 hover:text-slate-900 transition-all duration-300 xl:text-xs"
+                                :class="[
+                                    activeHash === item.hash
+                                        ? 'bg-white/90 text-[#274a78] shadow-[0_10px_25px_rgba(15,23,42,0.08)] ring-1 ring-[#d9d0bf]'
+                                        : 'hover:bg-white/60',
+                                ]"
+                            >
+                                <div class="flex items-center space-x-2.5">
+                                    <div
+                                        class="w-2 h-2 rounded-full transition-all duration-300"
+                                        :class="[
+                                            activeHash === item.hash
+                                                ? item.activeColor
+                                                : 'bg-slate-400 group-hover:bg-slate-600',
+                                        ]"
+                                    ></div>
+                                    <span>{{ item.text }}</span>
+                                </div>
 
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 -translate-x-full rounded-full"
+                                ></div>
+                            </a>
+                        </div>
+
+                        <div class="flex items-center pl-2">
                             <div
-                                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-700 -translate-x-full rounded-full"
-                            ></div>
-                        </a>
+                                class="inline-flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/80 p-0.5 shadow-sm backdrop-blur-sm"
+                            >
+                                <button
+                                    type="button"
+                                    @click="setLocale('en')"
+                                    :class="[
+                                        'rounded-full px-2 py-1 text-[0.5rem] font-semibold uppercase tracking-[0.14em] transition-colors',
+                                        currentLocale === 'en'
+                                            ? 'bg-[#274a78] text-white'
+                                            : 'text-slate-600 hover:text-slate-900',
+                                    ]"
+                                >
+                                    EN
+                                </button>
+                                <button
+                                    type="button"
+                                    @click="setLocale('ca')"
+                                    :class="[
+                                        'rounded-full px-2 py-1 text-[0.5rem] font-semibold uppercase tracking-[0.14em] transition-colors',
+                                        currentLocale === 'ca'
+                                            ? 'bg-[#274a78] text-white'
+                                            : 'text-slate-600 hover:text-slate-900',
+                                    ]"
+                                >
+                                    CAT
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Menú móvil hamburguesa -->
                     <div class="md:hidden">
                         <button
                             @click="toggleMobileMenu"
-                            class="relative w-10 h-10 rounded-full bg-gradient-to-r from-[#274a78] to-[#8a78d8] flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-                            :class="{ 'rotate-90': showMobileMenu }"
+                            class="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#d9d0bf]/80 bg-white/80 shadow-[0_8px_22px_rgba(15,23,42,0.08)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(39,74,120,0.12)]"
+                            :class="{
+                                'ring-2 ring-[#d8c67a]/60': showMobileMenu,
+                            }"
                         >
-                            <div class="space-y-1">
+                            <div
+                                class="relative flex flex-col items-center gap-1.5"
+                            >
                                 <div
-                                    class="w-5 h-0.5 bg-white rounded-full transition-all duration-300"
+                                    class="h-[2px] w-5 rounded-full bg-[#223a5a] transition-all duration-300"
                                     :class="{
-                                        'rotate-45 translate-y-1.5':
+                                        'translate-y-[7px] rotate-45':
                                             showMobileMenu,
                                     }"
                                 ></div>
                                 <div
-                                    class="w-5 h-0.5 bg-white rounded-full transition-all duration-300"
+                                    class="h-[2px] w-5 rounded-full bg-[#223a5a] transition-all duration-300"
                                     :class="{ 'opacity-0': showMobileMenu }"
                                 ></div>
                                 <div
-                                    class="w-5 h-0.5 bg-white rounded-full transition-all duration-300"
+                                    class="h-[2px] w-5 rounded-full bg-[#223a5a] transition-all duration-300"
                                     :class="{
-                                        '-rotate-45 -translate-y-1.5':
+                                        '-translate-y-[7px] -rotate-45':
                                             showMobileMenu,
                                     }"
                                 ></div>
@@ -116,28 +155,28 @@
 
             <!-- Menú móvil desplegable -->
             <div
-                class="md:hidden absolute top-full left-0 w-full backdrop-blur-xl bg-[#fbf8f2]/95 border-b border-[#d9d0bf]/70 shadow-xl transition-all duration-500 ease-out"
+                class="md:hidden absolute top-full left-0 w-full border-b border-[#d9d0bf]/70 bg-[#fbf8f2]/95 shadow-[0_18px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-500 ease-out"
                 :class="[
                     showMobileMenu
                         ? 'opacity-100 translate-y-0 pointer-events-auto'
                         : 'opacity-0 -translate-y-full pointer-events-none',
                 ]"
             >
-                <div class="px-6 py-4 space-y-2">
+                <div class="px-4 py-4 space-y-2">
                     <a
                         v-for="item in menuItems"
                         :key="item.hash"
                         :href="item.hash"
                         @click="scrollToSection(item.hash)"
-                        class="group flex items-center space-x-3 px-4 py-3 rounded-2xl font-body font-semibold uppercase tracking-[0.08em] transition-all duration-300"
+                        class="group flex items-center space-x-3 rounded-2xl border border-transparent px-4 py-3 font-body text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
                         :class="[
                             activeHash === item.hash
-                                ? 'bg-white text-[#274a78] shadow-[0_10px_25px_rgba(15,23,42,0.08)] ring-1 ring-[#d9d0bf]'
-                                : 'text-slate-600 hover:bg-white/80 hover:text-slate-900',
+                                ? 'border-[#d9d0bf] bg-white text-[#274a78] shadow-[0_10px_25px_rgba(15,23,42,0.08)]'
+                                : 'text-slate-600 hover:border-[#d9d0bf]/80 hover:bg-white/80 hover:text-slate-900',
                         ]"
                     >
                         <div
-                            class="w-3 h-3 rounded-full transition-all duration-300"
+                            class="h-2.5 w-2.5 rounded-full transition-all duration-300"
                             :class="[
                                 activeHash === item.hash
                                     ? item.activeColor
@@ -146,18 +185,48 @@
                         ></div>
                         <span>{{ item.text }}</span>
 
-                        <!-- Flecha indicadora -->
                         <div
                             class="ml-auto transition-all duration-300"
                             :class="[
                                 activeHash === item.hash
-                                    ? 'text-[#8a78d8] translate-x-1'
+                                    ? 'translate-x-1 text-[#8a78d8]'
                                     : 'text-slate-400 group-hover:translate-x-1',
                             ]"
                         >
                             →
                         </div>
                     </a>
+
+                    <div class="pt-2">
+                        <div
+                            class="inline-flex w-full items-center justify-between gap-2 rounded-2xl border border-[#d9d0bf]/80 bg-white/80 p-1 shadow-[0_8px_22px_rgba(15,23,42,0.04)]"
+                        >
+                            <button
+                                type="button"
+                                @click="setLocale('en')"
+                                class="flex-1 rounded-xl px-3 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.14em] transition-colors"
+                                :class="
+                                    currentLocale === 'en'
+                                        ? 'bg-[#274a78] text-white'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                "
+                            >
+                                EN
+                            </button>
+                            <button
+                                type="button"
+                                @click="setLocale('ca')"
+                                class="flex-1 rounded-xl px-3 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.14em] transition-colors"
+                                :class="
+                                    currentLocale === 'ca'
+                                        ? 'bg-[#274a78] text-white'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                "
+                            >
+                                CAT
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -170,9 +239,35 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 const showMobileMenu = ref(false);
+
+const getStoredLocale = () => {
+    if (typeof window === "undefined") return "en";
+    const stored = window.localStorage.getItem("portfolio-language");
+    return stored === "ca" ? "ca" : "en";
+};
+
+const currentLocale = ref(getStoredLocale());
+
+const setLocale = (value) => {
+    const next = value === "ca" ? "ca" : "en";
+    currentLocale.value = next;
+
+    if (typeof window !== "undefined") {
+        window.localStorage.setItem("portfolio-language", next);
+        window.dispatchEvent(
+            new CustomEvent("portfolio-language-change", {
+                detail: { locale: next },
+            }),
+        );
+    }
+};
+
+const syncLocale = () => {
+    currentLocale.value = getStoredLocale();
+};
 
 const activeHash = ref(window.location.hash || "#contact");
 const NAV_OFFSET = ref(64);
@@ -181,29 +276,45 @@ const measureNav = () => {
     NAV_OFFSET.value = document.querySelector("nav")?.offsetHeight || 64;
 };
 
-// Items del menú con colores personalizados
-const menuItems = ref([
-    {
-        hash: "#contact",
-        text: "Contact",
-        activeColor: "bg-gradient-to-r from-[#274a78] to-[#4e86c7]",
-    },
-    {
-        hash: "#tech",
-        text: "Technologies",
-        activeColor: "bg-gradient-to-r from-[#4e86c7] to-[#a98ae6]",
-    },
-    {
-        hash: "#projects",
-        text: "Projects",
-        activeColor: "bg-gradient-to-r from-[#d8c67a] to-[#c9aa4f]",
-    },
-    {
-        hash: "#about",
-        text: "About",
-        activeColor: "bg-gradient-to-r from-[#8a78d8] to-[#a98ae6]",
-    },
-]);
+const menuItems = computed(() => {
+    const labels =
+        currentLocale.value === "ca"
+            ? {
+                  contact: "Contacte",
+                  tech: "Tecnologies",
+                  projects: "Projectes",
+                  about: "Sobre mi",
+              }
+            : {
+                  contact: "Contact",
+                  tech: "Technologies",
+                  projects: "Projects",
+                  about: "About",
+              };
+
+    return [
+        {
+            hash: "#contact",
+            text: labels.contact,
+            activeColor: "bg-gradient-to-r from-[#274a78] to-[#4e86c7]",
+        },
+        {
+            hash: "#tech",
+            text: labels.tech,
+            activeColor: "bg-gradient-to-r from-[#4e86c7] to-[#a98ae6]",
+        },
+        {
+            hash: "#projects",
+            text: labels.projects,
+            activeColor: "bg-gradient-to-r from-[#d8c67a] to-[#c9aa4f]",
+        },
+        {
+            hash: "#about",
+            text: labels.about,
+            activeColor: "bg-gradient-to-r from-[#8a78d8] to-[#a98ae6]",
+        },
+    ];
+});
 
 const setActive = (hash) => {
     activeHash.value = hash;
@@ -254,7 +365,16 @@ const handleClickOutside = (event) => {
 
 onMounted(() => {
     measureNav();
+    syncLocale();
+
+    const onLocaleChange = (event) => {
+        const next = event.detail?.locale ?? getStoredLocale();
+        currentLocale.value = next === "ca" ? "ca" : "en";
+    };
+
     window.addEventListener("resize", measureNav);
+    window.addEventListener("portfolio-language-change", onLocaleChange);
+    window.addEventListener("storage", syncLocale);
 
     const handleScroll = () => {
         if (isAutoScrolling.value) return;
@@ -295,6 +415,8 @@ onMounted(() => {
 
     return () => {
         window.removeEventListener("resize", measureNav);
+        window.removeEventListener("portfolio-language-change", onLocaleChange);
+        window.removeEventListener("storage", syncLocale);
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("hashchange", onHashChange);
         document.removeEventListener("click", handleClickOutside);
