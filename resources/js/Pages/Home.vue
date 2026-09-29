@@ -341,10 +341,10 @@
                                 <p
                                     class="font-body mt-4 max-w-2xl text-sm md:text-base leading-7 text-slate-300"
                                 >
-                                    The stack stays quiet and useful: systems
-                                    that hold together, interfaces that breathe
-                                    and details that do not distract from the
-                                    work.
+                                    From databases to infrastructure and
+                                    deployment, every layer is chosen to keep
+                                    technology services reliable, scalable and
+                                    easy to maintain.
                                 </p>
                             </div>
 
