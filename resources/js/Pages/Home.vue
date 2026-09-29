@@ -28,7 +28,7 @@
                         >
                             A quieter, more curated digital presence: precise
                             interfaces, thoughtful motion and a perspective
-                            shaped by philosophy, technology and ethics.
+                            shaped by technology and ethics.
                         </p>
 
                         <div class="mt-8 flex flex-wrap justify-center gap-3">
@@ -131,63 +131,6 @@
                                 >
                                     TECHNOLOGY · ETHICS · TRUST
                                 </p>
-                            </div>
-                        </section>
-
-                        <section
-                            id="tech"
-                            class="museum-flow-section museum-flow-right museum-flow-dark museum-flow-dark-compact"
-                        >
-                            <div
-                                class="museum-flow-label museum-flow-label-light museum-reveal"
-                            >
-                                Studio tools
-                            </div>
-                            <div
-                                class="museum-flow-copy museum-reveal museum-reveal-delay-1"
-                            >
-                                <p
-                                    class="font-display text-3xl md:text-4xl text-white max-w-xl"
-                                >
-                                    A restrained toolset for calm, reliable
-                                    product surfaces.
-                                </p>
-
-                                <p
-                                    class="font-body mt-4 max-w-2xl text-sm md:text-base leading-7 text-slate-300"
-                                >
-                                    The stack stays quiet and useful: systems
-                                    that hold together, interfaces that breathe
-                                    and details that do not distract from the
-                                    work.
-                                </p>
-                            </div>
-
-                            <div
-                                class="museum-flow-aside museum-flow-aside-grid museum-reveal museum-reveal-delay-2"
-                            >
-                                <div
-                                    v-for="(tech, index) in technologies.slice(
-                                        0,
-                                        6,
-                                    )"
-                                    :key="index"
-                                    class="museum-tech-object"
-                                >
-                                    <div class="museum-tech-object-inner">
-                                        <div
-                                            v-if="tech.type === 'svg'"
-                                            v-html="tech.icon"
-                                            class="h-8 w-8"
-                                        ></div>
-                                        <img
-                                            v-else
-                                            :src="tech.icon"
-                                            :alt="tech.name"
-                                            class="h-8 w-8 object-contain"
-                                        />
-                                    </div>
-                                </div>
                             </div>
                         </section>
 
@@ -372,6 +315,63 @@
                                             {{ exp.description }}
                                         </p>
                                     </article>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section
+                            id="tech"
+                            class="museum-flow-section museum-flow-right museum-flow-dark museum-flow-dark-compact"
+                        >
+                            <div
+                                class="museum-flow-label museum-flow-label-light museum-reveal"
+                            >
+                                Studio tools
+                            </div>
+                            <div
+                                class="museum-flow-copy museum-reveal museum-reveal-delay-1"
+                            >
+                                <p
+                                    class="font-display text-3xl md:text-4xl text-white max-w-xl"
+                                >
+                                    A restrained toolset for calm, reliable
+                                    product surfaces.
+                                </p>
+
+                                <p
+                                    class="font-body mt-4 max-w-2xl text-sm md:text-base leading-7 text-slate-300"
+                                >
+                                    The stack stays quiet and useful: systems
+                                    that hold together, interfaces that breathe
+                                    and details that do not distract from the
+                                    work.
+                                </p>
+                            </div>
+
+                            <div
+                                class="museum-flow-aside museum-flow-aside-grid museum-reveal museum-reveal-delay-2"
+                            >
+                                <div
+                                    v-for="(tech, index) in technologies.slice(
+                                        0,
+                                        6,
+                                    )"
+                                    :key="index"
+                                    class="museum-tech-object"
+                                >
+                                    <div class="museum-tech-object-inner">
+                                        <div
+                                            v-if="tech.type === 'svg'"
+                                            v-html="tech.icon"
+                                            class="h-8 w-8"
+                                        ></div>
+                                        <img
+                                            v-else
+                                            :src="tech.icon"
+                                            :alt="tech.name"
+                                            class="h-8 w-8 object-contain"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </section>
