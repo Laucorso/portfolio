@@ -19,7 +19,7 @@
                         <h1
                             class="museum-hero-punch font-display mt-6 text-6xl md:text-7xl lg:text-8xl font-semibold leading-[0.9] text-slate-900"
                         >
-                            Full Stack
+                            Independent Product
                             <span class="block text-[#274a78]">Developer</span>
                         </h1>
 
@@ -520,7 +520,7 @@ const experiences = [
     {
         company: "Trioteca",
         icon: "/storage/images/trioteca.png",
-        role: "Full Stack Developer",
+        role: "Senior Developer",
         period: "2025 - Present",
         description: "Web development, user area + corporate CRM development",
         achievements: [
@@ -550,7 +550,7 @@ const experiences = [
     },
     {
         company: "Avannubo",
-        role: "Full Stack Developer",
+        role: "Senior Developer",
         period: "2022 - 2023",
         description:
             "Worked on multiple client websites and third-party projects, improving performance, maintainability and delivery speed for external clients.",

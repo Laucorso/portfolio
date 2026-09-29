@@ -44,8 +44,8 @@
                                 Laura Cormand
                             </span>
                             <span
-                                class="font-body text-xs uppercase tracking-[0.28em] text-slate-500"
-                                >Full Stack Developer</span
+                                class="font-body text-[10px] uppercase tracking-[0.28em] text-slate-500"
+                                >Useful systems people trust</span
                             >
                         </div>
                     </div>
