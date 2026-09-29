@@ -715,7 +715,6 @@ const experiences = computed(() => {
                       achievements: [
                           "Built new user flows so customers could submit mortgage applications directly from the platform",
                           "Automated client notifications via email and WhatsApp",
-                          "Developed the online valuation module",
                           "Extracted data from IDs and payslips using OCR with Textract and Gemini AI",
                           "Integrated GA and GTM to send tracking events and product data to data warehouses",
                           "Worked closely with designers on frontend delivery and UX refinement",
