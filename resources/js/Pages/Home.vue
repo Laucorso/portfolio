@@ -262,17 +262,12 @@
                                             <li
                                                 v-for="(
                                                     item, i
-                                                ) in experiences[0].achievements.slice(
-                                                    0,
-                                                    2,
-                                                )"
+                                                ) in experiences[0]
+                                                    .achievements"
                                                 :key="i"
-                                                class="flex items-start gap-3"
+                                                class="text-sm leading-6 text-slate-600"
                                             >
-                                                <span
-                                                    class="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[#4e86c7] via-[#a98ae6] to-[#d8c67a]"
-                                                ></span>
-                                                <span>{{ item }}</span>
+                                                {{ item }}
                                             </li>
                                         </ul>
                                     </article>
@@ -472,6 +467,7 @@ const translations = {
                 "Product clarity",
                 "Thoughtful systems",
                 "Human-centered UX",
+                "Analytics",
             ],
         },
         contact: {
@@ -529,6 +525,7 @@ const translations = {
                 "Claredat de producte",
                 "Sistemes pensats",
                 "UX centrada en la persona",
+                "Analítica",
             ],
         },
         contact: {
@@ -650,55 +647,128 @@ const technologies = [
     },
 ];
 
-const experiences = [
-    {
-        company: "Trioteca",
-        icon: "/storage/images/trioteca.png",
-        role: "Senior Developer",
-        period: "2025 - Present",
-        description: "Web development, user area + corporate CRM development",
-        achievements: [
-            "Implemented new features in the user area -> users can independently send leads to banks to apply for a mortgage",
-            "Automated client notifications via email and WhatsApp",
-            "Developed online appraisal module",
-            "Built data extraction from ID cards and payslips using OCR Textract / Gemini AI",
-            "Frontend development with close collaboration with designers",
-            "Developed front-agnostic project for new website -> Serverless framework + Nuxt.js",
-        ],
-        tech: ["Laravel", "Vue.js", "Laravel Nova", "AI", "AWS"],
-    },
-    {
-        company: "Clicktotravel",
-        icon: "/storage/images/clicktotravel.png",
-        role: "Backend Developer",
-        period: "2023 – 2024",
-        description:
-            "Custom CMS development for hotel management with SEO focus.",
-        achievements: [
-            "Implemented CMS in Laravel 10 with roles and permissions (Spatie)",
-            "Automated sitemap generation with cronjobs",
-            "Integrated BunnyCDN for content optimization",
-            "Integrated ChatGPT AI for hotel offers functionality",
-        ],
-        tech: ["Laravel", "MySQL", "BunnyCDN", "Spatie Roles/Permissions"],
-    },
-    {
-        company: "Avannubo",
-        role: "Senior Developer",
-        period: "2022 - 2023",
-        description:
-            "Worked on multiple client websites and third-party projects, improving performance, maintainability and delivery speed for external clients.",
-        achievements: [
-            "Implemented upgrades and refactors for client projects across different web products",
-            "Provided ongoing maintenance and feature development for third-party web platforms",
-            "Built CRM integrations with SharePoint API and internal tooling",
-            "Optimized queries, caching and frontend performance for production systems",
-            "Supported product teams with scalable Laravel + Vue architecture and DX improvements",
-        ],
-        tech: ["Laravel", "Vue.js", "Livewire", "MySQL", "Docker"],
-        icon: "/storage/images/avannubo.png",
-    },
-];
+const experiences = computed(() => {
+    const base =
+        locale.value === "ca"
+            ? [
+                  {
+                      company: "Trioteca",
+                      icon: "/storage/images/trioteca.png",
+                      role: "Senior Developer",
+                      period: "2025 - Actualitat",
+                      description:
+                          "Desenvolupament web, àrea d’usuari i CRM corporatiu.",
+                      achievements: [
+                          "Nova Zona d'usuari perquè els clients puguin enviar sol·licituds de préstecs bancaris de manera autònoma, integració de múltiples funcionalitats.",
+                          "Automatització de notificacions als clients per correu i WhatsApp",
+                          "IA per extracció de dades / informació de documents (DNI, nòmines).",
+                          "Desenvolupament frontend amb col·laboració estreta amb dissenyadors.",
+                          "Integració Google Analítics + GTM.",
+                          "Traspàs projecte antic a tot un entorn innovador i a la última tecnologia",
+                      ],
+                  },
+                  {
+                      company: "Clicktotravel",
+                      icon: "/storage/images/clicktotravel.png",
+                      role: "Backend Developer",
+                      period: "2023 – 2024",
+                      description:
+                          "Desenvolupament d’un CMS personalitzat per a la gestió hotelera amb enfocament SEO.",
+                      achievements: [
+                          "Implementació de CMS en Laravel 10 amb rols i permisos (Spatie)",
+                          "Generació automatitzada de sitemaps mitjançant cronjobs",
+                          "Integració de BunnyCDN per optimitzar continguts",
+                          "Integració d’AI de ChatGPT per a funcionalitats d’ofertes hoteleres",
+                      ],
+                  },
+                  {
+                      company: "Avannubo",
+                      role: "Senior Developer",
+                      period: "2022 - 2023",
+                      description:
+                          "Treball amb múltiples webs de clients i projectes externs, millorant rendiment, mantenibilitat i velocitat d’entrega.",
+                      achievements: [
+                          "Actualitzacions i refactors en projectes web de clients amb diferents productes",
+                          "Manteniment i desenvolupament de funcionalitats en plataformes web de tercers",
+                          "Integracions CRM amb SharePoint API i eines internes",
+                          "Optimització de queries, caching i rendiment frontend en producció",
+                          "Suport a equips de producte amb arquitectura Laravel + Vue escalable i millora del DX",
+                      ],
+                      tech: [
+                          "Laravel",
+                          "Vue.js",
+                          "Livewire",
+                          "MySQL",
+                          "Docker",
+                      ],
+                      icon: "/storage/images/avannubo.png",
+                  },
+              ]
+            : [
+                  {
+                      company: "Trioteca",
+                      icon: "/storage/images/trioteca.png",
+                      role: "Senior Developer",
+                      period: "2025 - Present",
+                      description:
+                          "Product and CRM work across the customer journey and internal operations of a financial platform.",
+                      achievements: [
+                          "Built new user flows so customers could submit mortgage applications directly from the platform",
+                          "Automated client notifications via email and WhatsApp",
+                          "Developed the online valuation module",
+                          "Extracted data from IDs and payslips using OCR with Textract and Gemini AI",
+                          "Integrated GA and GTM to send tracking events and product data to data warehouses",
+                          "Worked closely with designers on frontend delivery and UX refinement",
+                          "Migrated a legacy project into a cleaner, scalable stack",
+                      ],
+                      tech: ["Laravel", "Vue.js", "Laravel Nova", "AI", "AWS"],
+                  },
+                  {
+                      company: "Clicktotravel",
+                      icon: "/storage/images/clicktotravel.png",
+                      role: "Backend Developer",
+                      period: "2023 – 2024",
+                      description:
+                          "Custom CMS development for hotel operations with a strong SEO and content-performance focus.",
+                      achievements: [
+                          "Built a Laravel 10 CMS with role-based permissions and structured access control",
+                          "Automated sitemap generation through cron-based jobs",
+                          "Integrated BunnyCDN to improve content delivery and site performance",
+                          "Added ChatGPT-powered hotel offer functionality to improve conversion flows",
+                      ],
+                      tech: [
+                          "Laravel",
+                          "MySQL",
+                          "BunnyCDN",
+                          "Spatie Roles/Permissions",
+                      ],
+                  },
+                  {
+                      company: "Avannubo",
+                      role: "Senior Developer",
+                      period: "2022 - 2023",
+                      description:
+                          "Worked across multiple client websites and third-party products, improving performance, maintainability and delivery speed.",
+                      achievements: [
+                          "Delivered upgrades and refactors across several client-facing product builds",
+                          "Provided ongoing maintenance and feature development for external web platforms",
+                          "Integrated CRM workflows with SharePoint API and internal tooling",
+                          "Optimized database queries, caching and frontend performance for production systems",
+                          "Supported product teams with scalable Laravel + Vue architecture and DX improvements",
+                      ],
+                      tech: [
+                          "Laravel",
+                          "Vue.js",
+                          "Livewire",
+                          "MySQL",
+                          "Docker",
+                      ],
+                      icon: "/storage/images/avannubo.png",
+                  },
+              ];
+
+    return base;
+});
 
 let revealObserver = null;
 
