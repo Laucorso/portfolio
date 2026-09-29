@@ -521,10 +521,10 @@ const translations = {
     },
     ca: {
         hero: {
-            titleLineOne: "Producte independent",
-            titleLineTwo: "Developer",
+            titleLineOne: "Product developer",
+            titleLineTwo: "developer",
             subtitle:
-                "Una presència digital més serena i cuidada: experiències precises, moviment pensat i una mirada formada per la tecnologia i l’ètica.",
+                "Projectes a mida amb la millor tecnologia i una mirada ètica aplicada al producte.",
             pills: [
                 "Claredat de producte",
                 "Sistemes pensats",
