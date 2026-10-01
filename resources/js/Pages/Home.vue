@@ -35,13 +35,19 @@
                                 {{ t.hero.titleLineOne }}
                             </span>
                             <span
-                                class="font-display block uppercase tracking-[0.18em] text-[#274a78]"
-                                style="
-                                    font-size: 0.62em;
-                                    letter-spacing: 0.18em;
-                                "
+                                class="museum-tech-word font-display block"
+                                style="font-size: 0.62em"
                             >
-                                {{ t.hero.titleLineTwo }}
+                                <span
+                                    v-for="(
+                                        letter, index
+                                    ) in titleLineTwoLetters"
+                                    :key="`${letter}-${index}`"
+                                    class="museum-tech-letter"
+                                    :style="{ '--delay': index }"
+                                >
+                                    {{ letter === " " ? "\u00A0" : letter }}
+                                </span>
                             </span>
                         </h1>
 
@@ -477,7 +483,7 @@ const translations = {
     en: {
         hero: {
             badge: "Available for new projects",
-            tagline: "Ideas that ship. Interfaces that last.",
+            tagline: "Ideas that ship. Experiences that last.",
             scroll: "Scroll to explore",
             titleLineOne: "Independent Product",
             titleLineTwo: "Developer",
@@ -500,9 +506,9 @@ const translations = {
         },
         experience: {
             label: "Professional experience",
-            title: "Highlighted chapters.",
+            title: "Highlighted works.",
             description:
-                "Instead of a hard timeline, this section reads as three curated moments: the roles, the context and the craft that define each chapter.",
+                "This section highlights the experiences that have had the greatest impact: the roles, the context and the craft behind each chapter.",
             autonomy: "Autonomy",
             autonomyTitle:
                 "Independent work,<br />with structure and perspective.",
@@ -536,7 +542,7 @@ const translations = {
     ca: {
         hero: {
             badge: "Disponible per a nous projectes",
-            tagline: "Idees que s'entreguen. Interfícies que perduren.",
+            tagline: "Idees que s'entreguen. Experiències que perduren.",
             scroll: "Desplaça't per explorar",
             titleLineOne: "Product developer",
             titleLineTwo: "developer",
@@ -563,7 +569,7 @@ const translations = {
             label: "Experiència professional",
             title: "Treballs i rols.",
             description:
-                "En lloc d’una cronologia rígida, aquesta secció presenta tres etapes curades: el treball, el context i l’ofici que defineixen cada etapa.",
+                "Aquesta secció mostra les experiències més valuoses i les que més valor han aportat: els rols, el context i l’ofici que defineix cada etapa.",
             autonomy: "Autonomia",
             autonomyTitle:
                 "Treball independent,<br />amb estructura i perspectiva.",
@@ -597,6 +603,11 @@ const translations = {
 };
 
 const t = computed(() => translations[locale.value] || translations.en);
+
+const titleLineTwoLetters = computed(() => {
+    const line = (t.value.hero.titleLineTwo || "").toUpperCase();
+    return line.split("");
+});
 
 const setLocale = (value) => {
     const next = value === "ca" ? "ca" : "en";
@@ -1022,7 +1033,71 @@ onUnmounted(() => {
     }
 }
 
-/* Tagline con texto degradado azul -> dorado animado */
+/* Segunda línea del título: aparición elegante + brillo que recorre */
+.museum-tech-word {
+    display: inline-flex;
+    justify-content: center;
+    gap: 0.04em;
+    width: fit-content;
+    margin: 0 auto;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.museum-tech-letter {
+    display: inline-block;
+    color: #274a78;
+    opacity: 0;
+    transform: translateY(0.85em) scale(0.8);
+    filter: blur(10px);
+    animation:
+        techLetterReveal 1s cubic-bezier(0.18, 1.3, 0.32, 1) forwards,
+        techLetterSheen 6s ease-in-out infinite;
+    animation-delay:
+        calc(var(--delay) * 0.09s), calc(1.1s + var(--delay) * 0.09s);
+    will-change: transform, opacity, filter;
+}
+
+@keyframes techLetterReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(0.85em) scale(0.8);
+        filter: blur(10px);
+        text-shadow: none;
+    }
+    55% {
+        opacity: 1;
+        transform: translateY(-0.12em) scale(1.08);
+        filter: blur(0);
+        text-shadow: 0 0 26px rgba(110, 163, 216, 0.55);
+    }
+    75% {
+        transform: translateY(0.03em) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        text-shadow: none;
+    }
+}
+
+@keyframes techLetterSheen {
+    0%,
+    100% {
+        color: #274a78;
+        text-shadow: none;
+    }
+    45% {
+        color: #4e86c7;
+        text-shadow: 0 0 18px rgba(78, 134, 199, 0.35);
+    }
+    55% {
+        color: #6ea3d8;
+        text-shadow: 0 0 22px rgba(110, 163, 216, 0.45);
+    }
+}
+
 .museum-hero-tagline {
     font-weight: 600;
     letter-spacing: -0.02em;
