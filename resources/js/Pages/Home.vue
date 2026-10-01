@@ -488,7 +488,7 @@ const translations = {
             titleLineOne: "Independent Product",
             titleLineTwo: "Developer",
             subtitle:
-                "A quieter, more curated digital presence: precise interfaces, thoughtful motion and a perspective shaped by technology and ethics.",
+                "Projectes a mida amb la millor tecnologia i una mirada ètica aplicada al producte.",
             pills: [
                 "Product clarity",
                 "Thoughtful systems",
@@ -536,7 +536,7 @@ const translations = {
                 technology: "Technology",
                 ethics: "Ethics",
             },
-            quote: "The best interfaces are not louder. They are more honest.",
+            quote: "The best interfaces are not the loudest. They are the clearest.",
         },
     },
     ca: {
@@ -547,7 +547,7 @@ const translations = {
             titleLineOne: "Product developer",
             titleLineTwo: "developer",
             subtitle:
-                "Projectes a mida amb la millor tecnologia i una mirada ètica aplicada al producte.",
+                "Tailored projects with the best technology and an ethical perspective applied to the product.",
             pills: [
                 "Claredat de producte",
                 "Sistemes pensats",
@@ -597,7 +597,7 @@ const translations = {
                 technology: "Tecnologia",
                 ethics: "Ètica",
             },
-            quote: "Les millors interfícies no són més sorolloses. Són més honestes.",
+            quote: "Les millors experiències tecnològiques no són les més ostentoses. Són les més clares, eficients i efectives.",
         },
     },
 };
