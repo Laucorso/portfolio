@@ -299,14 +299,14 @@ const menuItems = computed(() => {
             activeColor: "bg-gradient-to-r from-[#274a78] to-[#4e86c7]",
         },
         {
-            hash: "#tech",
-            text: labels.tech,
-            activeColor: "bg-gradient-to-r from-[#4e86c7] to-[#a98ae6]",
-        },
-        {
             hash: "#projects",
             text: labels.projects,
             activeColor: "bg-gradient-to-r from-[#d8c67a] to-[#c9aa4f]",
+        },
+        {
+            hash: "#tech",
+            text: labels.tech,
+            activeColor: "bg-gradient-to-r from-[#4e86c7] to-[#a98ae6]",
         },
         {
             hash: "#about",

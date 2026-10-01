@@ -8,6 +8,7 @@
 
         <div class="museum-shell relative min-h-screen overflow-hidden">
             <div class="absolute inset-0 pointer-events-none">
+                <div class="museum-aurora"></div>
                 <div class="museum-orb museum-orb-blue"></div>
                 <div class="museum-orb museum-orb-lilac"></div>
                 <div class="museum-orb museum-orb-gold"></div>
@@ -19,6 +20,11 @@
                         <p
                             class="font-body text-xs uppercase tracking-[0.35em] text-slate-500"
                         ></p>
+
+                        <span class="museum-hero-punch museum-hero-badge">
+                            <span class="museum-hero-badge-dot"></span>
+                            {{ t.hero.badge }}
+                        </span>
 
                         <h1
                             class="museum-hero-punch mt-6 text-6xl md:text-7xl lg:text-8xl leading-[0.84] text-slate-900"
@@ -45,6 +51,12 @@
                             {{ t.hero.subtitle }}
                         </p>
 
+                        <p
+                            class="museum-hero-punch museum-hero-punch-delay-2 museum-hero-tagline font-display mx-auto mt-5 max-w-3xl text-2xl md:text-4xl leading-tight"
+                        >
+                            {{ t.hero.tagline }}
+                        </p>
+
                         <div class="mt-8 flex flex-wrap justify-center gap-3">
                             <span
                                 v-for="(pill, index) in t.hero.pills"
@@ -59,6 +71,17 @@
                                 ]"
                             >
                                 {{ pill }}
+                            </span>
+                        </div>
+
+                        <div
+                            class="museum-hero-punch museum-hero-punch-delay-4 museum-scroll-hint mt-6"
+                        >
+                            <span class="museum-scroll-label font-body">{{
+                                t.hero.scroll
+                            }}</span>
+                            <span class="museum-scroll-mouse">
+                                <span class="museum-scroll-wheel"></span>
                             </span>
                         </div>
                     </header>
@@ -80,23 +103,17 @@
                                     {{ t.contact.title }}
                                 </p>
 
-                                <p
-                                    class="font-body mt-5 max-w-2xl text-base md:text-lg leading-8 text-slate-600"
-                                >
-                                    {{ t.contact.description }}
-                                </p>
-
                                 <div class="mt-7 flex flex-wrap gap-3">
                                     <a
                                         href="https://wa.me/34655443754"
                                         target="_blank"
                                         class="museum-link-chip"
-                                        >WhatsApp · +34 655 443 754</a
+                                        >+34 655 443 754</a
                                     >
                                     <a
                                         href="mailto:laucorrs@gmail.com"
                                         class="museum-link-chip"
-                                        >Email · laucorrs@gmail.com</a
+                                        >laucorrs@gmail.com</a
                                     >
                                     <a
                                         href="/docs/CV-LauraCormand.pdf"
@@ -459,6 +476,9 @@ if (typeof window !== "undefined") {
 const translations = {
     en: {
         hero: {
+            badge: "Available for new projects",
+            tagline: "Ideas that ship. Interfaces that last.",
+            scroll: "Scroll to explore",
             titleLineOne: "Independent Product",
             titleLineTwo: "Developer",
             subtitle:
@@ -473,8 +493,6 @@ const translations = {
         contact: {
             label: "Contact / practice",
             title: "Building with intention.",
-            description:
-                "Open to joining projects where technology is treated as a craft, design is considered with care and ethical decisions are part of the process.",
             quoteLine1: "GOOD TECHNOLOGY",
             quoteLine2: "begins with clear decisions,",
             quoteLine3: "solid thinking and professional execution.",
@@ -517,6 +535,9 @@ const translations = {
     },
     ca: {
         hero: {
+            badge: "Disponible per a nous projectes",
+            tagline: "Idees que s'entreguen. Interfícies que perduren.",
+            scroll: "Desplaça't per explorar",
             titleLineOne: "Product developer",
             titleLineTwo: "developer",
             subtitle:
@@ -908,6 +929,183 @@ onUnmounted(() => {
     animation-delay: -12s;
 }
 
+/* Aurora de fondo azul/amarillo con degradado animado */
+.museum-aurora {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 120%;
+    height: 70%;
+    background:
+        radial-gradient(
+            40% 55% at 20% 25%,
+            rgba(39, 74, 120, 0.4) 0%,
+            transparent 70%
+        ),
+        radial-gradient(
+            45% 55% at 80% 15%,
+            rgba(216, 198, 122, 0.45) 0%,
+            transparent 72%
+        ),
+        radial-gradient(
+            55% 60% at 55% 40%,
+            rgba(78, 134, 199, 0.32) 0%,
+            transparent 75%
+        );
+    background-size: 160% 160%;
+    filter: blur(28px);
+    opacity: 0.85;
+    animation: auroraShift 16s ease-in-out infinite alternate;
+}
+
+@keyframes auroraShift {
+    0% {
+        background-position:
+            0% 50%,
+            100% 0%,
+            50% 50%;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        background-position:
+            30% 60%,
+            70% 20%,
+            40% 55%;
+    }
+    100% {
+        background-position:
+            60% 40%,
+            40% 30%,
+            60% 45%;
+        transform: translate3d(0, -1.5%, 0) scale(1.06);
+    }
+}
+
+/* Badge "disponible" con punto latente */
+.museum-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(39, 74, 120, 0.18);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #274a78;
+    backdrop-filter: blur(8px);
+}
+
+.museum-hero-badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: #d8c67a;
+    box-shadow: 0 0 0 0 rgba(216, 198, 122, 0.7);
+    animation: badgePulse 2s ease-out infinite;
+}
+
+@keyframes badgePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(216, 198, 122, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 0.6rem rgba(216, 198, 122, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(216, 198, 122, 0);
+    }
+}
+
+/* Tagline con texto degradado azul -> dorado animado */
+.museum-hero-tagline {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    background: linear-gradient(
+        100deg,
+        #274a78 0%,
+        #4e86c7 25%,
+        #d8c67a 50%,
+        #4e86c7 75%,
+        #274a78 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: taglineSheen 7s linear infinite;
+}
+
+@keyframes taglineSheen {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 220% center;
+    }
+}
+
+/* Indicador de scroll */
+.museum-scroll-hint {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.museum-scroll-label {
+    font-size: 0.6rem;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.museum-scroll-mouse {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 0.65rem;
+    width: 1.3rem;
+    height: 2.1rem;
+    padding-top: 0.35rem;
+    border: 1.5px solid rgba(39, 74, 120, 0.4);
+    border-radius: 9999px;
+}
+
+.museum-scroll-wheel {
+    width: 0.28rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: #274a78;
+    animation: scrollWheel 1.6s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        opacity: 0;
+        transform: translateY(-0.2rem);
+    }
+    35% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0;
+        transform: translateY(0.5rem);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .museum-pill {
     border-radius: 9999px;
     padding: 0.7rem 1rem;
@@ -1119,6 +1317,17 @@ onUnmounted(() => {
     .museum-hero-punch {
         opacity: 1;
         animation: none;
+    }
+
+    .museum-aurora,
+    .museum-hero-badge-dot,
+    .museum-hero-tagline,
+    .museum-scroll-wheel {
+        animation: none;
+    }
+
+    .museum-hero-tagline {
+        background-position: 0% center;
     }
 }
 
